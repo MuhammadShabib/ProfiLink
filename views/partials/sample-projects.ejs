@@ -1,0 +1,27 @@
+<h2 class="project-title">📂 نمونه پروژه‌ها</h2>
+<div class="project-container">
+<% if (typeof projects !== 'undefined' && projects.length === 0) { %>
+    <p>هیچ پروژه‌ای یافت نشد.</p>
+<% } else if (typeof projects !== 'undefined' && projects.length > 0) { %>
+    <% projects.forEach(project => { %>
+      <div class="project-card">
+        <% if (project.image) { %>
+          <img src="/uploads/<%= project.image %>">
+        <% } %>
+        <div class="content">
+          <h3><%= project.title %></h3>
+          <p><%= project.description.substring(0, 100) %>...</p>
+          <p class="author"><strong>توسط:</strong> <%= project.full_name %> - <%= project.profession %></p>
+          <% if (project.link) { %>
+            <a href="<%= project.link %>" target="_blank">مشاهده پروژه</a>
+          <% } %>
+        </div>
+        <div class="border"></div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
+
+<div class="view-all-btn">
+  <a href="/projects" class="btn">مشاهده همه پروژه‌ها</a>
+</div>

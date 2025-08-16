@@ -1,0 +1,72 @@
+<%- include('../partials/header') %>
+    <link rel="stylesheet" href="/css/projects.css">
+    <%- include('../partials/navbar') %>
+
+        <h2 class="project-title">همه پروژه‌ها</h2>
+        <div class="project-container">
+
+            <% projects.forEach(project=> { %>
+                <div class="project-card">
+                    <% if (project.image) { %>
+                        <img src="/uploads/<%= project.image %>">
+                        <% } %>
+
+                            <div class="content">
+                                <h3>
+                                    <%= project.title %>
+                                </h3>
+                                <p>
+                                    <%= project.description %>
+                                </p>
+                                <p class="author"><strong>توسط:</strong>
+                                    <%= project.full_name %> - <%= project.profession %>
+                                </p>
+                                <a href="/project/<%= project.id %>">مشاهده پروژه</a>
+
+                                <% if (userId) { %>
+                                    <button class="like-btn" data-id="<%= project.id %>">
+                                        <%= project.liked_by_user ? '💖 پسند شده' : '🤍 پسندیدن' %> (<span
+                                                class="like-count">
+                                                <%= project.likes %>
+                                            </span>)
+                                    </button>
+                                    <% } else { %>
+                                        <p>تعداد پسندها: <%= project.likes %>
+                                        </p>
+                                        <% } %>
+                            </div>
+                            <div class="border"></div>
+                </div>
+                <% }) %>
+
+        </div>
+
+        <%- include('../partials/footer') %>
+
+        <script>
+  document.querySelectorAll('.like-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const projectId = btn.dataset.id;
+
+      fetch(`/like/${projectId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        const countSpan = btn.querySelector('.like-count');
+        let current = parseInt(countSpan.textContent);
+        
+        if (data.liked) {
+          countSpan.textContent = current + 1;
+          btn.innerHTML = `💖 پسند شده (<span class="like-count">${current + 1}</span>)`;
+        } else {
+          countSpan.textContent = current - 1;
+          btn.innerHTML = `🤍 پسندیدن (<span class="like-count">${current - 1}</span>)`;
+        }
+      });
+    });
+  });
+</script>

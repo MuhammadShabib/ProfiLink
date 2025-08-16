@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="/css/my-projects.css">
+<%- include('../partials/navbar') %>
+
+<div class="container">
+  <h2 class="page-title">پروژه‌های من</h2>
+
+  <% if (projects.length === 0) { %>
+    <p class="no-projects">هیچ پروژه‌ای ثبت نشده است.</p>
+  <% } else { %>
+    <div class="project-grid">
+      <% projects.forEach(project => { %>
+        <div class="project-card">
+          <h3><%= project.title %></h3>
+          <p><%= project.description %></p>
+
+          <% if (project.image) { %>
+            <img src="/uploads/<%= project.image %>" alt="تصویر پروژه" class="project-image">
+          <% } %>
+
+          <% if (project.link) { %>
+            <p><a href="<%= project.link %>" target="_blank" class="project-link">🔗 مشاهده پروژه</a></p>
+          <% } %>
+
+          <div class="project-actions">
+            <a href="/edit-project/<%= project.id %>" class="btn edit">✏️ ویرایش</a>
+            <a href="/delete-project/<%= project.id %>" class="btn delete" onclick="return confirm('آیا مطمئن هستید که می‌خواهید حذف کنید؟')">🗑 حذف</a>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>

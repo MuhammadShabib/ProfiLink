@@ -1,0 +1,11 @@
+/* Footer Styles */
+footer {
+    height: 50px !important;
+    background: var(--bg-card);
+    border-top: 1px solid var(--input-border);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 4rem;
+    direction: ltr;
+}

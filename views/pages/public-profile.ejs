@@ -1,0 +1,82 @@
+<%- include('../partials/header') %>
+  <link rel="stylesheet" href="/css/user.css">
+  <%- include('../partials/navbar') %>
+
+    <div class="profile-container">
+      <div class="hero">
+        <% if (user.profile_picture) { %>
+          <div class="profile-image">
+            <img src="/uploads/resumes/<%= user.profile_picture %>" alt="عکس پروفایل" class="profile-pic">
+          </div>
+          <% } else { %>
+            <div class="profile-image">
+              <img src="/images/default-avatar.jpg" alt="عکس پیش‌فرض" class="profile-pic">
+            </div>
+            <% } %>
+
+
+              <h1>
+                <%= user.full_name %>
+              </h1>
+              <p>
+                <%= user.profession %>
+              </p>
+
+              <% if (user.email) { %>
+                <p><i class="fas fa-envelope"></i>
+                  <%= user.email %>
+                </p>
+                <% } %>
+
+                  <% if (user.phone) { %>
+                    <p><i class="fas fa-phone"></i>
+                      <%= user.phone %>
+                    </p>
+                    <% } %>
+
+                      <p>
+                        <%= user.summary || 'رزومه‌ای ثبت نشده است' %>
+                      </p>
+      </div>
+
+      <% if (user.education || user.experience || user.skills || user.languages) { %>
+        <div class="section">
+          <% if (user.education) { %>
+            <h2>🎓 تحصیلات</h2>
+            <p>
+              <%= user.education %>
+            </p>
+            <% } %>
+
+              <% if (user.experience) { %>
+                <h2>📂 تجربیات</h2>
+                <p>
+                  <%= user.experience %>
+                </p>
+                <% } %>
+
+                  <% if (user.skills) { %>
+                    <h2>💡 مهارت‌ها</h2>
+                    <p>
+                      <%= user.skills %>
+                    </p>
+                    <% } %>
+
+                      <% if (user.languages) { %>
+                        <h2>🌐 زبان‌ها</h2>
+                        <p>
+                          <%= user.languages %>
+                        </p>
+                        <% } %>
+        </div>
+        <% } %>
+
+          <% if (user.resume_file) { %>
+            <div class="section">
+              <h2>📎 فایل رزومه</h2>
+              <a href="/uploads/resumes/<%= user.resume_file %>" target="_blank">دانلود فایل</a>
+            </div>
+            <% } %>
+    </div>
+
+    <%- include('../partials/footer') %>

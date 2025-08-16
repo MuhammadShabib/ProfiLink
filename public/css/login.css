@@ -1,0 +1,373 @@
+:root {
+    /* Light mode colors */
+    --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-solid: #667eea;
+    --accent-hover: #5a67d8;
+    --border: rgba(226, 232, 240, 0.8);
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --shadow-heavy: rgba(0, 0, 0, 0.15);
+    --input-bg: #ffffff;
+    --input-border: #e2e8f0;
+    --input-focus: #667eea;
+    --success: #48bb78;
+    --error: #f56565;
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] {
+    /* Dark mode colors */
+    --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --bg-secondary: #1a202c;
+    --bg-card: rgba(26, 32, 44, 0.95);
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-solid: #667eea;
+    --accent-hover: #5a67d8;
+    --border: rgba(74, 85, 104, 0.6);
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-medium: rgba(0, 0, 0, 0.3);
+    --shadow-heavy: rgba(0, 0, 0, 0.4);
+    --input-bg: rgba(45, 55, 72, 0.8);
+    --input-border: #4a5568;
+    --input-focus: #667eea;
+    --success: #68d391;
+    --error: #fc8181;
+    --glass-bg: rgba(26, 32, 44, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+ 
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
+    position: relative;
+    margin-top: 100px !important;
+}
+
+/* Animated background particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-30px) rotate(120deg);
+    }
+
+    66% {
+        transform: translateY(30px) rotate(240deg);
+    }
+}
+
+
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px);
+    padding: 3.5rem 3rem;
+    border-radius: 24px;
+    box-shadow:
+        0 32px 64px var(--shadow-heavy),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.8;
+}
+
+.login-box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, var(--accent-solid), transparent);
+    animation: rotate 20s linear infinite;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    letter-spacing: -0.025em;
+}
+
+.login-box h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    letter-spacing: 0.025em;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--input-border);
+    border-radius: 16px;
+    font-size: 1rem;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: var(--input-focus);
+    box-shadow:
+        0 0 0 4px rgba(102, 126, 234, 0.1),
+        0 8px 25px var(--shadow-medium);
+    transform: translateY(-2px);
+    background: var(--bg-secondary);
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover {
+    border-color: var(--accent-solid);
+    transform: translateY(-1px);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 70%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.input-group:focus-within .input-icon {
+    color: var(--input-focus);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 1.25rem 2rem;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.025em;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* .btn:hover::before {
+    left: 100%;
+} */
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+
+.redirect-msg {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.redirect-msg a {
+    color: var(--accent-solid);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.redirect-msg a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-solid);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.redirect-msg a:hover::after {
+    width: 100%;
+}
+
+.redirect-msg a:hover {
+    color: var(--accent-hover);
+}
+
+
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        min-height: calc(100vh - 150px);
+    }
+
+    .login-box {
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+
+    .login-box h2 {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        padding: 1.1rem 1.1rem 1.1rem 3.2rem;
+        font-size: 0.95rem;
+    }
+
+    form {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        border-radius: 18px;
+    }
+
+    .login-box h2 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        padding: 1rem 1rem 1rem 3rem;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 1.1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .input-icon {
+        left: 1rem;
+        font-size: 1.1rem;
+    }
+}

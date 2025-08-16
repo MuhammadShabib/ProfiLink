@@ -1,0 +1,127 @@
+body {
+  line-height: 1.6;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 100px;
+}
+  .profile-pic {
+    width: 70px !important;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-color);
+  }
+
+
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Dashboard Box */
+.dashboard-box {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px var(--shadow-light);
+  padding: 30px;
+  margin: 30px 0;
+  border: 1px solid var(--border);
+  animation: fadeIn 0.5s ease;
+}
+
+
+.dashboard-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-box p {
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+
+
+.dashboard-box p strong {
+  background-color: rgba(67, 97, 238, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: var(--accent-solid);
+  font-weight: 500;
+}
+
+
+
+/* Dashboard Links */
+.dashboard-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.dash-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.dash-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px var(--shadow-medium);
+  border-color: var(--accent-solid);
+}
+
+.dash-link i {
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--accent-solid);
+  border-radius: 10px;
+  margin-left: 15px;
+  transition: all 0.3s ease;
+}
+
+
+.dash-link:hover i {
+  background-color: var(--accent-solid);
+  color: white;
+}
+
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-links {
+    grid-template-columns: 1fr;
+  }
+}

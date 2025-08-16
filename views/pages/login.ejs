@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="./css/login.css">
+<%- include('../partials/navbar') %>
+
+        <div class="container">
+        <div class="login-box">
+            <h2>ورود به حساب</h2>
+            <form action="/login" method="POST" id="loginForm">
+                <div class="input-group">
+                    <label for="email">ایمیل</label>
+                    <input type="email" name="email" id="email" required autocomplete="email">
+                    <i class="fas fa-envelope input-icon"></i>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">رمز عبور</label>
+                    <input type="password" name="password" id="password" required autocomplete="current-password">
+                    <i class="fas fa-lock input-icon"></i>
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">
+                    <i class="fas fa-sign-in-alt" style="margin-left: 0.5rem;"></i>
+                    ورود
+                </button>
+            </form>
+            <p class="redirect-msg">حساب ندارید؟ <a href="/register">ثبت‌نام کنید</a></p>
+        </div>
+    </div>
+ <%- include('../partials/footer') %>

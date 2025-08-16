@@ -1,0 +1,232 @@
+body {
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    background: var(--bg-secondary);
+    transition: var(--transition);
+    margin-top: 100px;
+}
+
+/* Page Title Styles */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.page-title::before {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-solid), var(--accent-hover));
+    border-radius: 2px;
+}
+
+.page-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-hover), var(--accent-solid));
+    border-radius: 2px;
+}
+
+/* No Users Message */
+.no-users {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.no-users::before {
+    content: '\f007';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--text-primary);
+    opacity: 0.3;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* User List Styles */
+.user-list {
+    list-style: none;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.user-list li {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-solid), var(--accent-hover));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.user-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--accent-solid);
+}
+
+.user-list li:hover::before {
+    transform: scaleX(1);
+}
+
+/* User Link Styles */
+.user-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.user-link::before {
+    content: '\f007';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.user-link:hover {
+    color: var(--accent-solid);
+    transform: translateX(-5px);
+}
+
+/* User Profession Styles */
+.user-profession {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 2rem;
+}
+
+.user-profession::before {
+    content: '\f0b1';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--accent-solid);
+    opacity: 0.7;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+
+    .page-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .page-title::before,
+    .page-title::after {
+        width: 40px;
+        height: 3px;
+    }
+
+    .user-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .user-list li {
+        padding: 1rem;
+    }
+
+    nav .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .user-link {
+        font-size: 1rem;
+    }
+
+    .user-profession {
+        font-size: 0.85rem;
+    }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-list li {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.user-list li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.user-list li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.user-list li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.user-list li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.user-list li:nth-child(5) {
+    animation-delay: 0.5s;
+}
+

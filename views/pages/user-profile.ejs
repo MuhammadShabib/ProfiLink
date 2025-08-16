@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+  <link rel="stylesheet" href="/css/user.css">
+
+<%- include('../partials/navbar') %>
+
+</style>
+
+<main class="profile-container">
+  <section class="hero">
+    <h1><%= user.full_name %></h1>
+    <p><%= user.summary %></p>
+  </section>
+
+  <section class="section">
+    <h2>📂 سوابق کاری</h2>
+    <p><%= user.work_experience %></p>
+  </section>
+
+  <section class="section">
+    <h2>🎓 تحصیلات</h2>
+    <p><%= user.education %></p>
+  </section>
+
+  <section class="section">
+    <h2>💡 مهارت‌ها</h2>
+    <p><%= user.skills %></p>
+  </section>
+
+  <section class="section">
+    <h2>🌐 زبان‌ها</h2>
+    <p><%= user.languages %></p>
+  </section>
+
+  <section class="section">
+    <h2>🧪 پروژه‌ها</h2>
+    <p><%= user.projects %></p>
+  </section>
+
+  <% if (user.user_file) { %>
+    <section class="section">
+      <h2>📎 رزومه PDF</h2>
+      <a href="/uploads/resumes/<%= resume.resume_file %>" target="_blank">دانلود فایل رزومه</a>
+    </section>
+  <% } %>
+</main>
+
+<%- include('../partials/footer') %>

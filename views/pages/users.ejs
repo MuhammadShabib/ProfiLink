@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="/css/users.css">
+<%- include('../partials/navbar') %>
+
+<div class="container">
+  <h2 class="page-title">لیست کاربران</h2>
+
+  <% if (users.length === 0) { %>
+    <p class="no-users">هیچ کاربری ثبت نشده است.</p>
+  <% } else { %>
+    <ul class="user-list">
+      <% users.forEach(user => { %>
+        <li>
+          <a href="/profile/<%= user.id %>" class="user-link"><%= user.full_name %></a> - <span class="user-profession"><%= user.profession %></span>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>

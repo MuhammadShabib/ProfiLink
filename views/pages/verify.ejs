@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <div class="verify-box">
+    <h2>تأیید ایمیل</h2>
+    <form action="/verify" method="POST">
+      <label for="code">کد تأیید</label>
+      <input type="text" name="code" id="code" required />
+      <button type="submit">تأیید</button>
+    </form>
+  </div>
+</div>
+<%- include('../partials/footer') %>

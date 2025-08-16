@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="./css/dashboard.css">
+<%- include('../partials/navbar') %>
+
+<div class="container">
+  <div class="dashboard-box">
+      <h2>سلام، <%= user.name %> <span style="margin-right: 10px;">  <% if (user.profile_picture) { %>
+    <img src="/uploads/resumes/<%= user.profile_picture %>" alt="پروفایل" class="profile-pic">
+  <% } else { %>
+    <img src="/images/default-avatar.jpg" alt="پیش‌فرض" class="profile-pic">
+  <% } %></span></h2>
+      <p>شما به عنوان <strong><%= user.profession %></strong> وارد شده‌اید.</p>
+
+    <div class="dashboard-links">
+        <a href="/add-project" class="dash-link">
+          <i class="fas fa-plus"></i>
+          <span>افزودن پروژه جدید</span>
+        </a>
+        <a href="/my-projects" class="dash-link">
+          <i class="fas fa-folder"></i>
+          <span>پروژه‌های من</span>
+        </a>
+        <a href="/edit-resume" class="dash-link">
+          <i class="fas fa-file-alt"></i>
+          <span>افزودن / آپلود رزومه</span>
+        </a>
+        <a href="/profile/<%= user.id %>" class="dash-link">
+          <i class="fas fa-user"></i>
+          <span>پروفایل من</span>
+        </a>
+        <a href="/projects" class="dash-link">
+          <i class="fas fa-globe"></i>
+          <span>همه پروژه‌ها</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

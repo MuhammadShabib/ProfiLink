@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/css/navbar.css">
+<nav>
+  
+  <h1 class="logo"><span>ProfiLink</span></h1>
+  
+  <div class="center" id="centerMenu">
+    <a href="/">خانه</a>
+    <a href="/projects">پروژه‌ها</a>
+    <a href="/users">کاربران</a>
+    <a href="/admin">مدیریت</a>
+  </div>
+  
+  <div class="left" id="leftMenu">
+    
+    
+    <% if (session && session.user) { %>
+      <a href="/dashboard">داشبورد</a>
+      <a href="/logout">خروج</a>
+      <% } else { %>
+        <a class="login" href="/login">ورود</a>
+        <a class="register" href="/register">ثبت‌نام</a>
+        <% } %>
+  
+    </div>
+
+
+    <button class="mobile-toggle" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+</nav>
+<button class="theme-toggle" onclick="toggleTheme()">
+  <i class="fas fa-moon" id="themeIcon"></i>
+</button>
+
+
+<script>
+  // Theme Toggle Functionality
+  function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.removeAttribute('data-theme');
+      themeIcon.className = 'fas fa-moon';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      themeIcon.className = 'fas fa-sun';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  // Load saved theme
+  function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeIcon = document.getElementById('themeIcon');
+
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.className = 'fas fa-sun';
+    }
+  }
+
+  // Initialize theme on page load
+  loadTheme();
+  // Mobile Menu Toggle
+  function toggleMobileMenu() {
+    const centerMenu = document.getElementById('centerMenu');
+    const leftMenu = document.getElementById('leftMenu');
+
+    centerMenu.classList.toggle('active');
+    leftMenu.classList.toggle('active');
+  }
+
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function (event) {
+    const nav = document.querySelector('nav');
+    const centerMenu = document.getElementById('centerMenu');
+    const leftMenu = document.getElementById('leftMenu');
+    const mobileToggle = document.querySelector('.mobile-toggle');
+
+    if (!nav.contains(event.target) || (!centerMenu.contains(event.target) && !leftMenu.contains(event.target) && !mobileToggle.contains(event.target))) {
+      centerMenu.classList.remove('active');
+      leftMenu.classList.remove('active');
+    }
+  });
+</script>
+</body>

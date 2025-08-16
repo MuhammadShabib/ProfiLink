@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container">
+  <h2 class="page-title">✏ ویرایش پروژه</h2>
+
+  <form action="/edit-project/<%= project.id %>" method="POST" enctype="multipart/form-data" class="form-box">
+    <div class="form-group">
+      <label for="title">عنوان پروژه</label>
+      <input type="text" id="title" name="title" value="<%= project.title %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">توضیحات</label>
+      <textarea id="description" name="description" rows="4" required><%= project.description %></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="link">لینک پروژه</label>
+      <input type="url" id="link" name="link" value="<%= project.link %>">
+    </div>
+
+    <div class="form-group">
+      <label>تصویر فعلی:</label><br>
+      <% if (project.image) { %>
+        <img src="/uploads/<%= project.image %>" alt="پروژه" style="max-width: 200px; margin-bottom: 10px;">
+      <% } else { %>
+        <span>هیچ تصویری موجود نیست</span>
+      <% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="image">تغییر تصویر پروژه</label>
+      <input type="file" id="image" name="image" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn submit">💾 ذخیره تغییرات</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

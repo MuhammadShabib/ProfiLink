@@ -1,0 +1,86 @@
+<%- include('../partials/header') %>
+    <link rel="stylesheet" href="/css/edit-resume.css">
+    <%- include('../partials/navbar') %>
+
+        <div class="container">
+            <h2>📝 ویرایش رزومه</h2>
+            <form action="/resume/edit-resume" method="POST" enctype="multipart/form-data" class="form-box">
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" name="email" placeholder="ایمیل" value="<%= resume?.email || '' %>">
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" name="phone" placeholder="شماره تماس" value="<%= resume?.phone || '' %>">
+                </div>
+
+                <div class="file-upload-section">
+                    <i class="fas fa-image"></i>
+                    <p>آپلود عکس پروفایل (jpg/png)</p>
+                    <input type="file" name="profile_picture" accept="image/*">
+                    <% if (resume?.profile_picture) { %>
+                        <div class="current-file">
+                            <p>عکس فعلی:</p>
+                            <img src="/uploads/resumes/<%= resume.profile_picture %>" alt="پروفایل" width="100"
+                                style="border-radius: 50px;">
+                        </div>
+                        <% } %>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="summary" placeholder="خلاصه زندگی" value="<%= resume?.summary || '' %>"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-birthday-cake"></i>
+                    <input type="number" name="age" placeholder="سن" value="<%= resume?.age || '' %>">
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" name="location" placeholder="محل زندگی" value="<%= resume?.location || '' %>">
+                </div>
+
+        
+             
+
+                <div class="form-group">
+                    <i class="fas fa-graduation-cap"></i>
+                    <textarea name="education" placeholder="تحصیلات"><%= resume?.education || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-briefcase"></i>
+                    <textarea name="experience" placeholder="تجربیات"><%= resume?.experience || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-tools"></i>
+                    <textarea name="skills" placeholder="مهارت‌ها"><%= resume?.skills || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-language"></i>
+                    <textarea name="languages" placeholder="زبان‌ها"><%= resume?.languages || '' %></textarea>
+                </div>
+
+                <div class="file-upload-section">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>آپلود فایل رزومه (PDF/DOC)</p>
+                    <input type="file" name="resume_file">
+                    <% if (resume?.resume_file) { %>
+                        <div class="current-file">
+                            <p>فایل فعلی: <a href="/uploads/resumes/<%= resume.resume_file %>" target="_blank">مشاهده
+                                    رزومه</a></p>
+                        </div>
+                        <% } %>
+                </div>
+
+                <button type="submit">💾 ذخیره</button>
+            </form>
+        </div>
+
+        <%- include('../partials/footer') %>
